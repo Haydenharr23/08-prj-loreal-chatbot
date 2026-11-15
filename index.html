@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <meta
+      name="description"
+      content="Discover L'Oréal makeup, skincare, haircare, and fragrance."
+    />
+    <title>L'Oréal Beauty Assistant</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -19,15 +23,45 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <img
+          class="brand-logo"
+          src="img/loreal-logo.png"
+          alt="L'Oréal"
+        />
+        <div class="header-copy">
+          <p class="eyebrow">BEAUTY, PERSONALIZED</p>
+          <h1 class="site-title">L'Oréal Beauty Assistant</h1>
+          <p class="site-intro">
+            Explore makeup, skincare, haircare, and fragrance with recommendations
+            shaped around you.
+          </p>
+        </div>
       </header>
 
       <!------- Chat Area ------->
       <main>
-        <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
+        <section class="chatbox" aria-labelledby="chat-heading">
+          <div class="chat-heading">
+            <p class="eyebrow">YOUR BEAUTY CONVERSATION</p>
+            <h2 id="chat-heading">What can we help you discover?</h2>
+          </div>
+          <div
+            id="chatWindow"
+            class="chat-window"
+            role="log"
+            aria-live="polite"
+            aria-label="Chat conversation"
+          >
             <!-- messages will be appended here via JS -->
           </div>
+          <div
+            id="currentExchange"
+            class="current-exchange"
+            role="region"
+            aria-label="Latest question and response"
+            aria-live="polite"
+            hidden
+          ></div>
 
           <form id="chatForm" class="chat-form">
             <label for="userInput" class="visually-hidden">Message</label>
@@ -47,15 +81,13 @@
         </section>
       </main>
 
-      <!------- Footer Links ------->
+      <!------- Footer / Product Note ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
-        </nav>
+        <p class="footer-brand">L'Oréal Beauty Assistant</p>
+        <p>
+          Product details and availability may vary by country. Check product
+          packaging or official L'Oréal information for the latest details.
+        </p>
       </footer>
     </div>
 
