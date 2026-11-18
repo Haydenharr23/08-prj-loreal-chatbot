@@ -1,6 +1,16 @@
-# Project 8: L'Oréal Chatbot
+# L'Oréal Beauty Assistant: Product-Aware Routine Builder
 
-L’Oréal is exploring the power of AI, and your job is to showcase what's possible. Your task is to build a chatbot that helps users discover and understand L’Oréal’s extensive range of products—makeup, skincare, haircare, and fragrances—as well as provide personalized routines and recommendations.
+A branded L'Oréal chatbot upgraded into a smart routine builder. Users browse real L'Oréal brand products, select the ones they want, generate a personalized routine with AI, and ask follow-up questions about it.
+
+## ✨ Features
+
+- **Browse** products by category from `products.json`.
+- **Select** a product by clicking its card (or pressing Enter/Space). Selected cards get a red border and a check mark.
+- **Read descriptions** by hovering over or tabbing to a card.
+- **Selected Products** list with a remove button on each item and a **Clear all** button.
+- **Saved selections:** picks are stored in `localStorage` and stay after a page reload.
+- **Generate Routine** sends only the selected products' name, brand, category, and description to the AI, and the routine appears in the chat window.
+- **Follow-up questions:** the full conversation is sent with every request, so the assistant remembers the routine.
 
 ## 🚀 Launch via GitHub Codespaces
 
@@ -19,9 +29,9 @@ The frontend sends chat messages to a Cloudflare Worker. The Worker uses a Worke
 
 The Worker currently uses Cloudflare's `@cf/meta/llama-3.3-70b-instruct-fp8-fast` text-generation model. See [Cloudflare's Workers AI binding documentation](https://developers.cloudflare.com/workers-ai/configuration/bindings/) for current dashboard and model setup details.
 
-No verified L'Oréal product catalog is connected. The assistant can discuss general product types, but it should not name specific products or ingredients unless reliable product information is supplied to the Worker.
+Product information comes from `products.json`. When the user generates a routine, the selected products' details are included in the message sent to the Worker, so the assistant works from real product data.
 
-The browser keeps successful user and assistant messages in memory and sends the conversation history with each request. Refreshing the page starts a new conversation. The latest question and response appear together; when a new question is sent, the previous exchange moves into the transcript.
+The browser keeps successful user and assistant messages in memory and sends the conversation history with each request. Refreshing the page starts a new conversation (selected products are kept). Every question and response appears inside the chat window, with the question just above its reply.
 
 The frontend sends the conversation in this format:
 

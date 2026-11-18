@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Discover L'Oréal makeup, skincare, haircare, and fragrance."
+      content="Choose L'Oréal products and get a personalized beauty routine."
     />
-    <title>L'Oréal Beauty Assistant</title>
+    <title>L'Oréal Beauty Assistant | Routine Builder</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -32,18 +32,77 @@
           <p class="eyebrow">BEAUTY, PERSONALIZED</p>
           <h1 class="site-title">L'Oréal Beauty Assistant</h1>
           <p class="site-intro">
-            Explore makeup, skincare, haircare, and fragrance with recommendations
-            shaped around you.
+            Choose the L'Oréal products you love, then let your beauty assistant
+            turn them into a routine shaped around you.
           </p>
         </div>
       </header>
 
-      <!------- Chat Area ------->
       <main>
+        <!------- Step 1: Browse Products ------->
+        <section class="panel" aria-labelledby="browse-heading">
+          <div class="panel-heading">
+            <span class="step-number">1</span>
+            <div>
+              <p class="eyebrow">BROWSE</p>
+              <h2 id="browse-heading">Find your products</h2>
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <label for="categoryFilter" class="visually-hidden">Category</label>
+          <select id="categoryFilter" class="category-filter">
+            <option value="" disabled selected>Choose a Category</option>
+            <option value="cleanser">Cleansers</option>
+            <option value="skincare">Skincare</option>
+            <option value="moisturizer">Moisturizers &amp; Treatments</option>
+            <option value="haircare">Haircare</option>
+            <option value="makeup">Makeup</option>
+            <option value="hair color">Hair Color</option>
+            <option value="hair styling">Hair Styling</option>
+            <option value="men's grooming">Men's Grooming</option>
+            <option value="suncare">Suncare</option>
+            <option value="fragrance">Fragrance</option>
+          </select>
+
+          <p class="hint">
+            Click a product to add it to your routine. Hover over or tab to a
+            product to read its description.
+          </p>
+
+          <!-- Products Grid (filled in by script.js) -->
+          <div id="productsContainer" class="products-grid"></div>
+        </section>
+
+        <!------- Step 2: Selected Products ------->
+        <section class="panel" aria-labelledby="selected-heading">
+          <div class="panel-heading">
+            <span class="step-number">2</span>
+            <div>
+              <p class="eyebrow">YOUR PICKS</p>
+              <h2 id="selected-heading">Selected Products</h2>
+            </div>
+            <button id="clearSelections" class="clear-btn" type="button">
+              Clear all
+            </button>
+          </div>
+
+          <div id="selectedProductsList" class="selected-list" aria-live="polite"></div>
+
+          <button id="generateRoutine" class="generate-btn" type="button">
+            <span class="material-icons" aria-hidden="true">auto_awesome</span>
+            Generate Routine
+          </button>
+        </section>
+
+        <!------- Step 3: Chat Area ------->
         <section class="chatbox" aria-labelledby="chat-heading">
-          <div class="chat-heading">
-            <p class="eyebrow">YOUR BEAUTY CONVERSATION</p>
-            <h2 id="chat-heading">What can we help you discover?</h2>
+          <div class="panel-heading">
+            <span class="step-number">3</span>
+            <div>
+              <p class="eyebrow">YOUR BEAUTY CONVERSATION</p>
+              <h2 id="chat-heading">About Your Routine</h2>
+            </div>
           </div>
           <div
             id="chatWindow"
@@ -54,14 +113,6 @@
           >
             <!-- messages will be appended here via JS -->
           </div>
-          <div
-            id="currentExchange"
-            class="current-exchange"
-            role="region"
-            aria-label="Latest question and response"
-            aria-live="polite"
-            hidden
-          ></div>
 
           <form id="chatForm" class="chat-form">
             <label for="userInput" class="visually-hidden">Message</label>
@@ -69,12 +120,12 @@
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask about your routine or any beauty topic…"
               autocomplete="off"
               required
             />
             <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
+              <span class="material-icons" aria-hidden="true">send</span>
               <span class="visually-hidden">Send</span>
             </button>
           </form>
@@ -88,6 +139,12 @@
           Product details and availability may vary by country. Check product
           packaging or official L'Oréal information for the latest details.
         </p>
+        <nav class="footer-links" aria-label="Footer">
+          <!-- These URLs are placeholders -->
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Contact</a>
+        </nav>
       </footer>
     </div>
 
